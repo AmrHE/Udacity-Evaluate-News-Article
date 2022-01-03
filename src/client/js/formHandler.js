@@ -18,7 +18,7 @@ function handleSubmit(event) {
 		})
 			.then((res) => res.json())
 			.then(function (res) {
-				console.log(res);
+				// console.log(res);
 				document.getElementById("language").innerHTML =
 					"Language: " + res.model;
 				document.getElementById("score_tag").innerHTML =

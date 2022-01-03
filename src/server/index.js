@@ -1,5 +1,5 @@
 const dotenv = require("dotenv");
-dotenv.config({ path: "./config.env" });
+dotenv.config();
 
 const path = require("path");
 const express = require("express");
@@ -26,8 +26,8 @@ app.get("/", function (req, res) {
 });
 
 // designates what port the app will listen to for incoming requests
-app.listen(8081, function () {
-	console.log(`Example app listening on port 8081!`);
+app.listen(process.env.PORT, function () {
+	console.log(`Example app listening on port ${process.env.PORT}!`);
 });
 
 // app.get("/test", function (req, res) {
@@ -38,7 +38,7 @@ app.post("/test", async function (req, res) {
 	const { url } = req.body;
 	const API_KEY = "cabcc9a3dc56784f8f04294fec859f18";
 	const response = await fetch(
-		`https://api.meaningcloud.com/sentiment-2.1?key=${API_KEY}&url=${url}&lang=en`,
+		`https://api.meaningcloud.com/sentiment-2.1?key=${process.env.API_KEY}&url=${url}&lang=en`,
 		{ method: "POST" }
 	);
 
